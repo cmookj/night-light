@@ -15,33 +15,24 @@ import blinkt
 
 blinkt.set_clear_on_exit()
 max_brightness = 0.4
-steps = 20
-duration = 5
 
 blinkt.clear()
 start = 0
 end = 60
-turned_on = False
 
 def sleep_led_on():
     print('ON')
-
-    if turned_on == False:
-        for i in range(steps):
-            blinkt.set_brightness(max_brightness / steps * i)
-            hue = start + (((end - start) / float(blinkt.NUM_PIXELS)) * 2)
-            r, g, b = [int(c * 255) for c in colorsys.hsv_to_rgb(hue/360.0, 1.0, 1.0)]
-            blinkt.set_all(r, g, b)
-            blinkt.show()
-            time.sleep(duration / steps)
-        turned_on = True
+    blinkt.set_brightness(max_brightness)
+    hue = start + (((end - start) / float(blinkt.NUM_PIXELS)) * 2)
+    r, g, b = [int(c * 255) for c in colorsys.hsv_to_rgb(hue/360.0, 1.0, 1.0)]
+    blinkt.set_all(r, g, b)
+    blinkt.show()
 
 
 def sleep_led_off():
     print('OFF')
     blinkt.clear()
     blinkt.show()
-    turned_on = False
 
 
 class repeated_timer(object):
@@ -158,7 +149,7 @@ def is_lighting_needed(now, sunrise_h, sunrise_m, sunset_h, sunset_m):
 
 
 def check_time():
-# Get current date and time 
+    # Get current date and time 
     now = datetime.now().timetuple()
     print("now = {:0>2}:{:0>2}:{:0>2}".format(now.tm_hour, now.tm_min, now.tm_sec))
 
@@ -166,6 +157,7 @@ def check_time():
         sleep_led_on()
     else:
         sleep_led_off()
+
 
 def forever():
     while True:
