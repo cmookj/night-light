@@ -14,7 +14,7 @@ import colorsys
 import blinkt
 
 blinkt.set_clear_on_exit()
-max_brightness = 0.4
+max_brightness = 0.5
 
 blinkt.clear()
 start = 0
