@@ -24,24 +24,24 @@ end = 60
 turned_on = False
 
 def sleep_led_on():
-        print('ON')
+    print('ON')
 
-	if !turned_on:
-		for i in range(steps):
-			blinkt.set_brightness(max_brightness / steps * i)
-			hue = start + (((end - start) / float(blinkt.NUM_PIXELS)) * 2)
-			r, g, b = [int(c * 255) for c in colorsys.hsv_to_rgb(hue/360.0, 1.0, 1.0)]
-			blinkt.set_all(r, g, b)
-			blinkt.show()
-			time.sleep(duration / steps)
-		turned_on = True
+    if !turned_on:
+        for i in range(steps):
+            blinkt.set_brightness(max_brightness / steps * i)
+            hue = start + (((end - start) / float(blinkt.NUM_PIXELS)) * 2)
+            r, g, b = [int(c * 255) for c in colorsys.hsv_to_rgb(hue/360.0, 1.0, 1.0)]
+            blinkt.set_all(r, g, b)
+            blinkt.show()
+            time.sleep(duration / steps)
+        turned_on = True
 
 
 def sleep_led_off():
-        print('OFF')
-        blinkt.clear()
-        blinkt.show()
-	turned_on = False
+    print('OFF')
+    blinkt.clear()
+    blinkt.show()
+    turned_on = False
 
 
 class repeated_timer(object):
