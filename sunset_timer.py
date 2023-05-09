@@ -26,7 +26,7 @@ turned_on = False
 def sleep_led_on():
     print('ON')
 
-    if !turned_on:
+    if turned_on == False:
         for i in range(steps):
             blinkt.set_brightness(max_brightness / steps * i)
             hue = start + (((end - start) / float(blinkt.NUM_PIXELS)) * 2)
