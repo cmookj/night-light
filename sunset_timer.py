@@ -35,7 +35,7 @@ def sleep_led_off():
     blinkt.show()
 
 
-class repeated_timer(object):
+class RepeatedTimer(object):
   def __init__(self, interval, function, *args, **kwargs):
     self._timer = None
     self.interval = interval
@@ -201,7 +201,7 @@ sunrise_h, sunrise_m, sunset_h, sunset_m = get_sunrise_sunset_time(api_url)
 print ("Today's sunrise at {}:{}".format(sunrise_h, sunrise_m))
 print ("         sunset at {}:{}".format(sunset_h, sunset_m))
 
-rt = repeated_timer(30, check_time) # it auto-starts, no need of rt.start()
+rt = RepeatedTimer(30, check_time) # it auto-starts, no need of rt.start()
 try:
     forever()
 finally:
