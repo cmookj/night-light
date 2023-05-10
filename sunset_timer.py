@@ -115,17 +115,11 @@ class HourMinute:
         dt_utc = datetime.strptime(utc_str, format)
         dt_utc = dt_utc.replace(tzinfo = pytz.UTC)
 
-        print ('Datetime in UTC time zone: ', dt_utc)
-
         # Get local timezone 
         local_tz = get_localzone()
 
         # Convert timezone of datetime from UTC to local 
         dt_local = dt_utc.astimezone(local_tz)
-        # print ('Datetime in Local time zone: ', dt_local)
-
-        # local_time_str = dt_local.strftime(format)
-        # print ('Time as string in local time zone', local_time_str)
 
         self.hour = dt_local.hour + dst
         self.min = dt_local.minute
@@ -151,8 +145,8 @@ class SunriseSunsetTime:
             self.sunrise.utc_to_local(sunrise_time)
             self.sunset.utc_to_local(sunset_time)
 
-            print ("Today's sunrise at {}:{}".format(self.sunrise.hour, self.sunrise.min))
-            print ("         sunset at {}:{}".format(self.sunset.hour, self.sunset.min))
+            print ("Today's sunrise at {:0>2}:{:0>2}".format(self.sunrise.hour, self.sunrise.min))
+            print ("         sunset at {:0>2}:{:0>2}".format(self.sunset.hour, self.sunset.min))
         else: 
             print ('Error in getting sunrise and sunset time')
 
