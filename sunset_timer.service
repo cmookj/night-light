@@ -1,17 +1,20 @@
 [Unit]
-Description=Sunset Timer LED Lighting
+Description = Sunset Timer LED Lighting
 
-Wants=network.target
-After=syslog.target network-online.target
+Wants = network.target
+After = syslog.target network-online.target
 
 [Service]
-Type=simple
-WorkingDirectory=/home/cmookj/sunset_timer
-ExecStart=/usr/local/bin/sunset_timer.sh
-Restart=on-failure
-RestartSec=10
-KillMode=process
+Type             = simple
+ExecStart        = python /usr/local/share/sunset_timer/sunset_timer.py
+User             = root
+Group            = root 
+Restart          = on-failure
+SyslogIdentifier = sunset_timer
+RestartSec       = 10
+TimtoutStartSec  = infinity
+KillMode         = process
 
 [Install]
-WantedBy=multi-user.target
+WantedBy = multi-user.target
 
