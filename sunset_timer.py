@@ -159,7 +159,7 @@ class SunriseSunsetTime:
 
 class SunsetTimer:
     def __init__(self, interval):
-        self.inverval = interval 
+        self.interval = interval 
         self.blinkt = Blinkt(0.5)
         self.last_check_hour = 0 
         self.last_check_min = 0
