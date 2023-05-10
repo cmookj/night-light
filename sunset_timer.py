@@ -161,6 +161,8 @@ class SunsetTimer:
     def __init__(self, interval):
         self.inverval = interval 
         self.blinkt = Blinkt(0.5)
+        self.last_check_hour = 0 
+        self.last_check_min = 0
         self.current_pos_lat = 0 
         self.current_pos_lng = 0 
         self.get_location_info()
@@ -220,6 +222,9 @@ class SunsetTimer:
         current_h = now.tm_hour 
         current_m = now.tm_min 
 
+        if current_h < self.last_check_hour:
+            self.sunrise_sunset_time.fetch()
+
         sunrise_h = self.sunrise_sunset_time.sunrise.hour 
         sunrise_m = self.sunrise_sunset_time.sunrise.min  
 
@@ -231,6 +236,9 @@ class SunsetTimer:
 
         if ((current_h == sunrise_h and current_m < sunrise_m) or (current_h == sunset_h and sunset_m < current_m)):
             return True 
+
+        self.last_check_hour = current_h 
+        self.last_check_min = current_m
 
         return False 
 
