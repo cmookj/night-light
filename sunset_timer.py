@@ -103,7 +103,7 @@ class HourMinute:
 
     # Convert UTC datetime string to local time 
     def utc_to_local(self, utc_str):
-        format = '%H:%M:%S %p'
+        format = '%I:%M:%S %p'
 
         # Get current time 
         now = time.localtime() 
