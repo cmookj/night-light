@@ -6,7 +6,7 @@ After = syslog.target network-online.target
 
 [Service]
 Type             = simple
-ExecStart        = /usr/local/share/venv/binpython /usr/local/share/venv/bin/sunset_timer.py
+ExecStart        = /usr/local/share/venv/bin/python /usr/local/share/venv/bin/sunset_timer.py
 User             = root
 Group            = root 
 Restart          = on-failure
