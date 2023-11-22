@@ -6,13 +6,13 @@ After = syslog.target network-online.target
 
 [Service]
 Type             = simple
-ExecStart        = python /usr/local/share/sunset_timer/sunset_timer.py
+ExecStart        = /usr/local/share/venv/binpython /usr/local/share/venv/bin/sunset_timer.py
 User             = root
 Group            = root 
 Restart          = on-failure
 SyslogIdentifier = sunset_timer
 RestartSec       = 10
-TimtoutStartSec  = infinity
+TimeoutStartSec  = infinity
 KillMode         = process
 
 [Install]
